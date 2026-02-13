@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our First Valentine ❤️</title>
+
+<!-- Google Fancy Font -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+h1 {
+    font-family: 'Great Vibes', cursive;
+    color: red;
+    margin-top: 30px;
+    font-size: 42px;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+img {
+    width: 350px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.3);
+}
+
+.message {
+    margin-top: 20px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 36px;
+    color: #000;
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    bottom: -10px;
+    font-size: 20px;
+    color: red;
+    animation: floatUp 5s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-800px); opacity: 0; }
+}
+
+#clickMessage {
+    margin-top: 10px;
+    font-size: 16px;
+    color: darkred;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Happy Our First Valentine My Love ❤️</h1>
+<div id="clickMessage">Click anywhere to start the music 🎵</div>
+
+<div class="container">
+    <img src="love.jpg" alt="Our Love">
+    <div class="message">i love you , my moon ❤️</div>
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="barato.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const music = document.getElementById("bgMusic");
+
+document.body.addEventListener("click", function() {
+    music.play();
+    document.getElementById("clickMessage").style.display = "none";
+}, { once: true });
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}
+
+setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
